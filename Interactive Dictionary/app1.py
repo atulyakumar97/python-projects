@@ -15,8 +15,8 @@ def lookup_word(word):
 	elif word.upper() in data:
 		return data[word.upper()]
 
-	elif len(get_close_matches(word, data.keys(), cutoff=0.8)) > 0 :
-		closest_match = get_close_matches(word, data.keys(), cutoff=0.8)[0]
+	elif len(get_close_matches(word, data.keys(), cutoff=0.2)) > 0 :
+		closest_match = get_close_matches(word, data.keys(), cutoff=0.2)[0]
 		print('\nDid you mean %s instead?' % closest_match)
 		
 		choice = input('Please enter "Y" if yes, and "N" for no: ')
