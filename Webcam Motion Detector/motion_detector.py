@@ -21,7 +21,7 @@ while True:  # showing video requires infinite loop
     thresh_frame = cv2.threshold(delta_frame, 30, 255, cv2.THRESH_BINARY)[1]  # converting difference into treshold, only black and white pixels
     thresh_frame = cv2.dilate(thresh_frame, None, iterations=2)  # dilating / smoothing the treshold image
 
-    (_,cnts,_) = cv2.findContours(thresh_frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # finding the contours on the treshold image (copy)
+    (cnts,_) = cv2.findContours(thresh_frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # finding the contours on the treshold image (copy)
     for contour in cnts:
         if cv2.contourArea(contour) < 1000:  # checking each contour area, so we ignore small differences
             continue
@@ -35,7 +35,7 @@ while True:  # showing video requires infinite loop
     cv2.imshow('Color frame', frame)
 
     key = cv2.waitKey(1)  # wait 1 milisecond between each loop
-    if key == ord('q'):   # 'Q' key will break the loop and exit
+    if key == ord('q') or key==ord('Q'):   # 'Q' key will break the loop and exit
         break
 
 video.release()  # stops using the webcam
