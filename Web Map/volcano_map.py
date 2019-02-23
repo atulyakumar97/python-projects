@@ -34,8 +34,8 @@ fg_pop = folium.FeatureGroup(name='Population')
 world_data = open('world.json', 'r', encoding='utf-8-sig')
 
 fg_pop.add_child(folium.GeoJson(data=world_data.read(),
-style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 10000000
-else 'orange' if 10000000 <= x['properties']['POP2005'] < 20000000 else 'red' }))
+style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 100000000
+else 'orange' if 100000000 <= x['properties']['POP2005'] < 200000000 else 'red' }))
 # style_function will give the fillColor of the polygons according to the population of each country
 # use lambda function to add a "nested" function with conditionals to check population property of the countries
 # and determine their color according to the number
